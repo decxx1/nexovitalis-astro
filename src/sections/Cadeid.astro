@@ -1,0 +1,32 @@
+---
+import Section from '@/components/Section.astro';
+import Title from '@/components/Title.astro';
+---
+
+<Section
+  id="cadeid"
+  class="flex flex-col items-center justify-between gap-5 md:flex-row md:gap-10"
+>
+  <Title
+    title="Somos miembros de la CADEID."
+    img="/cadeidIcon.png"
+    class="w-full md:hidden"
+  />
+  <img src="/cadeidImg.webp" alt="CADEID" width="300" class="w-[300px]" />
+  <div class="flex h-full flex-col items-start justify-center gap-5">
+    <Title
+      title="Somos miembros de la CADEID."
+      img="/cadeidIcon.png"
+      class="hidden md:flex"
+    />
+    <h3 class="text-subtitle text-center md:text-left">
+      Somos miembros de la CÁMARA ARGENTINA DE EMPRESAS DE INTERNACIÓN DOMICLIARIA.
+    </h3>
+    <p class="text-body text-center md:text-left">
+      Esta es una acción fundamental para impulsar en conjunto la excelencia del sector y mantenernos
+      a la vanguardia, así como también generar cobertura de servicios en todo el país a través de
+      numerosas empresas asociadas a la Red nacional de prestadores. Ser parte de CADEID es apostar al
+      crecimiento en un espacio de integración con más de 20 años de trayectoria.
+    </p>
+  </div>
+</Section>

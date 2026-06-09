@@ -1,0 +1,29 @@
+---
+interface Props {
+  img: string;
+  title: string;
+  class?: string;
+  titleClass?: string;
+  light?: boolean;
+}
+
+const { img, title, class: className = '', titleClass = '', light = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start',
+    className,
+  ]}
+>
+  <img src={img} alt="" width="65" height="65" class="h-[65px] w-[65px] shrink-0" />
+  <h2
+    class:list={[
+      'text-title text-center sm:text-left',
+      light && 'text-white',
+      titleClass,
+    ]}
+  >
+    {title}
+  </h2>
+</div>

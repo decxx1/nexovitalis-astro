@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/sections/Hero.astro';
+import About from '@/sections/About.astro';
+import Servicios from '@/sections/Servicios.astro';
+import Compromiso from '@/sections/Compromiso.astro';
+import Cadeid from '@/sections/Cadeid.astro';
+import Info from '@/sections/Info.astro';
+import Footer from '@/sections/Footer.astro';
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const preloadImages = [
+	{
+		href: "/hero.webp",
+		as: "image",
+		type: "image/webp",
+	},
+];
+---
+
+<BaseLayout
+  	title="Nexovitalis - Atención médica en el domicilio"
+	canonical={canonical}
+	metaDescription="Brindamos cuidados integrales de salud en el domicilio, ofrecemos atención médica de alta calidad con agilidad y seguridad, con un equipo altamente capacitado"
+	metaImg="/d3.webp"
+	preLoad={preloadImages}
+>
+  <main>
+    <Hero />
+    <About />
+    <Servicios />
+    <Compromiso />
+    <Cadeid />
+    <Info />
+    <Footer />
+  </main>
+</BaseLayout>

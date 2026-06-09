@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: rgb(1 12 125);
+  --color-secondary: rgb(217 64 189);
+  --color-tertiary: rgb(212 136 64);
+  --color-text: rgb(1 8 82);
+  --font-sans: "Inter Tight Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply box-border px-[30px] pt-[60px] md:px-[8%] md:pt-20 lg:px-[12%];
+  }
+
+  .text-hero {
+    @apply text-[clamp(30px,5vw,60px)] font-semibold leading-normal text-white text-balance;
+    text-shadow: rgb(0 0 0) 0 0 40px;
+  }
+
+  .text-title {
+    @apply text-2xl font-semibold leading-normal text-primary sm:text-[26px] md:text-[28px];
+  }
+
+  .text-body {
+    @apply text-base font-normal leading-[1.4] text-text md:text-[19px];
+  }
+
+  .text-subtitle {
+    @apply text-xl font-semibold leading-[1.4] text-text;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 rounded-full py-2 px-4 text-white no-underline transition-opacity hover:opacity-90;
+    background: linear-gradient(
+      to right,
+      rgb(1 12 125),
+      rgb(217 64 189),
+      rgb(212 136 64)
+    );
+  }
+
+  .btn-whatsapp-alt {
+    @apply inline-flex items-center gap-2 rounded-full py-2 px-4 text-white no-underline transition-opacity hover:opacity-90;
+    background: linear-gradient(to right, rgb(217 64 189), rgb(212 136 64));
+  }
+
+  .bg-gradient-brand {
+    background: linear-gradient(
+      to right,
+      rgb(1 12 125),
+      rgb(217 64 189),
+      rgb(212 136 64)
+    );
+  }
+
+  .nav-link {
+    @apply cursor-pointer text-sm font-semibold uppercase text-primary transition-colors duration-200 hover:text-secondary;
+  }
+
+  .nav-link-mobile {
+    @apply cursor-pointer text-base font-semibold uppercase text-white transition-colors duration-200 hover:text-secondary;
+  }
+}
+
+/* reCAPTCHA badge */
+.grecaptcha-badge {
+  width: 70px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  left: 4px !important;
+  z-index: 1000;
+  display: none;
+}
+
+.grecaptcha-badge:hover {
+  width: 256px !important;
+}

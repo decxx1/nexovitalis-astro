@@ -1,0 +1,25 @@
+---
+import Section from '@/components/Section.astro';
+---
+
+<Section id="info" class="flex flex-col items-center justify-between gap-5 md:flex-row md:gap-10">
+  <div
+    class="bg-gradient-brand relative flex w-full flex-col items-center justify-center gap-5 overflow-hidden rounded-[30px] px-5 py-[50px] md:items-start md:px-[70px]"
+  >
+    <h4
+      class="max-w-[400px] text-center text-[26px] font-semibold text-white md:max-w-[500px] md:text-left md:text-[30px]"
+    >
+      Conectamos la vitalidad y la atención médica en cada visita.
+    </h4>
+    <p class="text-center text-[17px] italic text-white md:text-left md:text-xl">
+      Contactanos para recibir asesoramiento profesional
+    </p>
+    <div id="whatsapp-dock" class="flex w-full justify-center md:justify-start"></div>
+    <img
+      src="/dna.webp"
+      alt=""
+      width="100"
+      class="absolute right-[70px] hidden md:block"
+    />
+  </div>
+</Section>

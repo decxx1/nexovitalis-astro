@@ -1,0 +1,18 @@
+---
+import Section from '@/components/Section.astro';
+import Title from '@/components/Title.astro';
+import CompromisoCard from '@/components/CompromisoCard.astro';
+import { compromisos } from '@/data/compromisos';
+---
+
+<Section id="compromiso" class="flex flex-col items-start">
+  <Title
+    title="Compromiso Vitalis: donde la conexión es vital, la calidad asistencial es nuestra norma."
+    img="/handIcon.png"
+  />
+  <div class="mt-[30px] flex w-full flex-row flex-wrap items-center justify-center gap-5">
+    {compromisos.map((compromiso) => (
+      <CompromisoCard compromiso={compromiso} />
+    ))}
+  </div>
+</Section>

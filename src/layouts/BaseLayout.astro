@@ -1,0 +1,64 @@
+---
+import '@/styles/global.css';
+// Supports weights 100-900
+import '@fontsource-variable/inter-tight/wght.css';
+
+import Nav from '@/components/Nav.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import type { Preload } from "@/types/Preload";
+
+interface Props {
+	title: string;
+	canonical: string;
+	metaDescription: string;
+	metaImg: string;
+	preLoad?: Array<Preload>;
+}
+
+const { title, canonical, metaDescription, metaImg, preLoad } = Astro.props;
+const urlBase = Astro.url.origin;
+const fullImg = urlBase + metaImg;
+
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>{title}</title>
+
+		<!-- SEO -->
+		<link rel="canonical" href={canonical} />
+		<!-- GOOGLE -->
+		<meta name="description" content={metaDescription} />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="Mon, 01 Jul 1970 00:00:00 GMT" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<!-- FACEBOOK OPEN GRAPH TAGS -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={fullImg} />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={metaDescription} />
+		<meta name="twitter:url" content={canonical} />
+		<meta name="twitter:image" content={fullImg} />
+
+  </head>
+  <body class="font-sans text-text antialiased">
+    <Nav />
+    <slot />
+    <WhatsAppButton />
+  </body>
+</html>
