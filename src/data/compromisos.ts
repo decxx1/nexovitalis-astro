@@ -7,26 +7,28 @@ export interface Compromiso {
 
 export const compromisos: Compromiso[] = [
   {
-    title: 'Misión',
+    title: 'Nuestro propósito',
     description:
-      'Nuestra misión es ser el servicio de salud al que cualquier ciudadano desea acudir para cubrir sus necesidades, ofreciendo una atención excelente en cada aspecto de la relación con el paciente y su familia.',
+      'Cuidar la vida en todas sus etapas, acompañando, educando y previniendo en cada paso. Ponemos a la persona en el centro: pacientes y familias en el domicilio, equipos de trabajo en las empresas.',
     bg: 'rgb(1, 12, 125)',
   },
   {
-    title: 'Visión',
+    title: 'Lo que nos diferencia',
     description:
-      'Nuestra misión es ser el servicio de salud al que cualquier ciudadano desea acudir para cubrir sus necesidades, ofreciendo una atención excelente en cada aspecto de la relación con el paciente y su familia.',
+      'Integramos excelencia profesional, tecnología y calidez humana para garantizar una atención segura, cercana y adaptada a cada necesidad. ',
     bg: 'rgb(217, 64, 189)',
   },
   {
-    title: 'Valores',
+    title: 'Nuestros valores',
     list: [
       'Exelencia',
       'Integridad',
-      'Compasión',
+      'Empatía',
       'Innovación',
       'Colaboración',
+      'Responsabilidad',
       'Sostenibilidad',
+      'Formación'
     ],
     bg: 'rgb(212, 136, 64)',
   },

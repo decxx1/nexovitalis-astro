@@ -7,26 +7,23 @@ const slides = [
   {
     bg: '/hero.webp',
     lines: [
-      'Atención médica',
-      'de la más alta calidad',
-      'en la comodidad',
-      'de tu hogar.',
+      'Soluciones médicas',
+      'integrales para el hogar',
+      'las empresas',
+      'y las ART.',
     ],
   },
   {
     bg: '/hero1.webp',
     lines: [
-      'Compromiso Vitalis:',
-      'donde la conexión es vital,',
-      'la calidad asistencial',
-      'es nuestra norma.',
+      'Innovando en sistemas de salud',
     ],
   },
 ];
 
 export default function HeroCarousel() {
   return (
-    <section className="relative mt-20 min-h-[500px] max-h-[1000px] h-[calc(100vh-150px)] md:h-[calc(100vh-80px)]">
+    <section className="relative mt-20 min-h-125 max-h-250 h-[calc(100vh-150px)] md:h-[calc(100vh-80px)]">
       <Swiper
         modules={[EffectFade, Autoplay]}
         effect="fade"
@@ -39,14 +36,14 @@ export default function HeroCarousel() {
         {slides.map((slide) => (
           <SwiperSlide key={slide.bg} className="h-full w-full">
             <div
-              className="relative flex h-full w-full flex-col justify-between bg-cover bg-[position:54%_100%] px-[30px] py-10 md:px-[60px] md:py-[60px]"
+              className="relative flex h-full w-full flex-col justify-between bg-cover bg-[position:54%_100%] px-7.5 py-10 md:px-15 md:py-15"
               style={{ backgroundImage: `url(${slide.bg})` }}
             >
               <img
                 src="/dna.webp"
                 alt=""
                 width={200}
-                className="absolute bottom-[-130px] right-[70px] hidden w-[200px] opacity-70 md:block"
+                className="absolute -bottom-32.5 right-17.5 hidden w-50 opacity-70 md:block"
               />
               <h1 className="text-hero flex flex-col text-center md:text-left">
                 {slide.lines.map((line) => (

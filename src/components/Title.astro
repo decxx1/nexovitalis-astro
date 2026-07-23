@@ -2,12 +2,22 @@
 interface Props {
   img: string;
   title: string;
+  subtitle?: string;
   class?: string;
   titleClass?: string;
+  subtitleClass?: string;
   light?: boolean;
 }
 
-const { img, title, class: className = '', titleClass = '', light = false } = Astro.props;
+const {
+  img,
+  title,
+  subtitle,
+  class: className = '',
+  titleClass = '',
+  subtitleClass = '',
+  light = false,
+} = Astro.props;
 ---
 
 <div
@@ -17,13 +27,22 @@ const { img, title, class: className = '', titleClass = '', light = false } = As
   ]}
 >
   <img src={img} alt="" width="65" height="65" class="h-[65px] w-[65px] shrink-0" />
-  <h2
-    class:list={[
-      'text-title text-center sm:text-left',
-      light && 'text-white',
-      titleClass,
-    ]}
-  >
-    {title}
-  </h2>
+  <div class="flex flex-col text-center sm:text-left">
+    <h2
+      class:list={[
+        'text-title',
+        light && 'text-white',
+        titleClass,
+      ]}
+    >
+      {title}
+    </h2>
+    {
+      subtitle && (
+        <p class:list={['text-subtitle mt-2', light && 'text-white', subtitleClass]}>
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
 </div>
