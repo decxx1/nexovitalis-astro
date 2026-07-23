@@ -1,7 +1,7 @@
 ---
 import Section from '@/components/Section.astro';
 import Title from '@/components/Title.astro';
-import ServicioAccordion from '@/components/ServicioAccordion.astro';
+import ServicioCards from '@/components/ServicioCards.astro';
 import { CATEGORIAS_SERVICIOS } from '@/data/servicios';
 ---
 
@@ -9,61 +9,12 @@ import { CATEGORIAS_SERVICIOS } from '@/data/servicios';
   {
     CATEGORIAS_SERVICIOS.map((categoria, categoriaIndex) => (
       <div
-        class:list={['w-full', categoriaIndex > 0 && 'mt-16 md:mt-20']}
+        class:list={['w-full', categoriaIndex > 0 && 'mt-12 md:mt-14']}
         id={categoria.id}
       >
         <Title title={categoria.title} subtitle={categoria.subtitle} img={categoria.img} />
-        <ServicioAccordion items={categoria.items} bg={categoria.bg} />
+        <ServicioCards items={categoria.items} bg={categoria.bg} />
       </div>
     ))
   }
 </Section>
-
-<script>
-  const bgClassMap: Record<string, string> = {
-    primary: 'bg-primary',
-    secondary: 'bg-secondary',
-    tertiary: 'bg-tertiary',
-  };
-
-  document.querySelectorAll('.servicios-accordion').forEach((accordion) => {
-    const items = accordion.querySelectorAll('.servicio-item');
-    const bgKey = accordion.getAttribute('data-bg') ?? 'primary';
-    const closedBgClass = bgClassMap[bgKey] ?? 'bg-primary';
-    let openIndex: number | null = null;
-
-    items.forEach((item, index) => {
-      const trigger = item.querySelector('.servicio-trigger') as HTMLButtonElement;
-      const panel = item.querySelector('.servicio-panel') as HTMLElement;
-      const chevron = item.querySelector('.servicio-chevron') as SVGElement;
-
-      trigger?.addEventListener('click', () => {
-        const isOpen = openIndex === index;
-
-        items.forEach((otherItem, otherIndex) => {
-          const otherTrigger = otherItem.querySelector('.servicio-trigger') as HTMLButtonElement;
-          const otherPanel = otherItem.querySelector('.servicio-panel') as HTMLElement;
-          const otherChevron = otherItem.querySelector('.servicio-chevron') as SVGElement;
-
-          if (otherIndex === index && !isOpen) {
-            otherTrigger.classList.remove(closedBgClass);
-            otherTrigger.classList.add('bg-gradient-brand');
-            otherPanel.classList.remove('grid-rows-[0fr]');
-            otherPanel.classList.add('grid-rows-[1fr]');
-            otherChevron.classList.add('rotate-180');
-            otherTrigger.setAttribute('aria-expanded', 'true');
-          } else {
-            otherTrigger.classList.add(closedBgClass);
-            otherTrigger.classList.remove('bg-gradient-brand');
-            otherPanel.classList.add('grid-rows-[0fr]');
-            otherPanel.classList.remove('grid-rows-[1fr]');
-            otherChevron.classList.remove('rotate-180');
-            otherTrigger.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        openIndex = isOpen ? null : index;
-      });
-    });
-  });
-</script>

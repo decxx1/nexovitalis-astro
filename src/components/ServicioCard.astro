@@ -1,0 +1,41 @@
+---
+import type { ServicioItem } from '@/data/servicios';
+
+interface Props {
+  item: ServicioItem;
+  bg: string;
+}
+
+const { item, bg } = Astro.props;
+
+const accentClass =
+  bg === 'primary' ? 'bg-primary' : bg === 'secondary' ? 'bg-secondary' : 'bg-tertiary';
+---
+
+<article
+  class="flex h-full flex-col overflow-hidden rounded-[15px] bg-white shadow-[0_2px_12px_rgba(1,12,125,0.08)]"
+>
+  <img
+    src={`/${item.img}`}
+    alt={item.title}
+    class="h-36 w-full object-cover sm:h-72"
+    loading="lazy"
+  />
+  <div class="flex flex-1 flex-col gap-2.5 p-4">
+    <h3
+      class:list={[
+        'rounded-lg px-3 py-1.5 text-base font-semibold leading-snug text-white md:text-lg',
+        accentClass,
+      ]}
+    >
+      {item.title}
+    </h3>
+    <ul class="list-none columns-1 gap-x-4 pl-0 text-sm leading-snug text-text sm:columns-2">
+      {
+        item.list.map((entry) => (
+          <li class="mb-1 break-inside-avoid pl-0">• {entry}</li>
+        ))
+      }
+    </ul>
+  </div>
+</article>
