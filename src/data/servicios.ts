@@ -95,7 +95,7 @@ export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
       },
       {
         title: 'Salud para Líderes y Posiciones Estratégicas',
-        img: 'd7.webp',
+        img: 'medic-staff.webp',
         list: [
           'Evaluación integral de salud y factores de riesgo',
           'Detección precoz de patologías cardiovasculares y metabólicas',
@@ -137,7 +137,7 @@ export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
     items: [
       {
         title: 'Prestaciones domiciliarias para ART',
-        img: 'd8.webp',
+        img: 'safety-work.webp',
         list: [
           'Rehabilitación motora, respiratoria y neurológica',
           'Psicoterapia, evaluación y psicodiagnóstico',

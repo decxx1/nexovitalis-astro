@@ -6,11 +6,14 @@ import { compromisos } from '@/data/compromisos';
 ---
 
 <Section id="compromiso" class="flex flex-col items-start">
-  <Title
-    title="Somos una marca registrada de CARIM S.A. dedicada a ofrecer cuidados de salud de excelencia, con foco en la internación domiciliaria y la salud empresarial."
-    img="/handIcon.png"
-  />
-  <div class="mt-7.5 mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 justify-center gap-5">
+  <div class="flex w-full max-w-3xl flex-col gap-4">
+    <Title title="Quiénes somos" img="/handIcon.png" />
+    <p class="text-subtitle text-center sm:max-w-2xl sm:text-left">
+      Somos una marca registrada de CARIM S.A. dedicada a ofrecer cuidados de salud de excelencia, con
+      foco en la internación domiciliaria y la salud empresarial.
+    </p>
+  </div>
+  <div class="mt-7.5 mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 justify-center gap-4 lg:gap-2 xl:gap-5">
     {compromisos.map((compromiso) => (
       <CompromisoCard compromiso={compromiso} />
     ))}
