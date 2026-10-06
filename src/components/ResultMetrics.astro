@@ -1,0 +1,36 @@
+---
+import type { Resultados } from '@/data/servicios';
+
+interface Props {
+  resultados: Resultados;
+}
+
+const { resultados } = Astro.props;
+
+const columnsClass =
+  resultados.columns === 'five'
+    ? 'grid-cols-2 sm:grid-cols-3 xl:grid-cols-5'
+    : 'grid-cols-2 lg:grid-cols-4';
+---
+
+<div class="my-16 w-full md:my-20">
+  <h3 class="text-title text-center sm:text-left">{resultados.title}</h3>
+  <p class="text-body mx-auto mt-3 max-w-4xl text-center italic sm:mx-0 sm:text-left">
+    {resultados.quote}
+  </p>
+
+  <ul class:list={['mt-10 grid gap-x-6 gap-y-10', columnsClass]}>
+    {
+      resultados.items.map((item) => (
+        <li class="flex flex-col items-center text-center">
+          <div class="flex size-28 items-center justify-center rounded-full border-2 border-primary sm:size-32">
+            <img src={item.icon} alt="" class="h-auto w-12 sm:w-14" />
+          </div>
+          <p class="mt-4 max-w-44 border-t-2 border-primary pt-3 text-sm font-semibold text-balance text-primary md:text-base">
+            {item.label}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</div>

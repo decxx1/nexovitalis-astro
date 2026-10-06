@@ -5,18 +5,56 @@ import ServicioCard from '@/components/ServicioCard.astro';
 interface Props {
   items: ServicioItem[];
   bg: string;
+  expanded?: boolean;
 }
 
-const { items, bg } = Astro.props;
+const { items, bg, expanded = false } = Astro.props;
+
+const accentClass =
+  bg === 'primary' ? 'bg-primary' : bg === 'secondary' ? 'bg-secondary' : 'bg-tertiary';
 ---
 
-<div
-  class:list={[
-    'mt-7.5 grid w-full items-start gap-4',
-    items.length === 1
-      ? 'max-w-sm grid-cols-1'
-      : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3',
-  ]}
->
-  {items.map((item) => <ServicioCard item={item} bg={bg} />)}
-</div>
+{
+  expanded ? (
+    <div class="mt-7.5 grid w-full items-stretch gap-4 lg:grid-cols-[450px_1fr] lg:gap-8">
+      {items.map((item) => (
+        <>
+          <img
+            src={`/${item.img}`}
+            alt={item.title}
+            class="h-64 w-full rounded-[15px] object-cover shadow-[0_2px_12px_rgba(1,12,125,0.08)] lg:h-full"
+            loading="lazy"
+          />
+          <article class="flex flex-col overflow-hidden rounded-[15px] bg-white shadow-[0_2px_12px_rgba(1,12,125,0.08)]">
+            <h3
+              class:list={[
+                'px-5 py-3 text-base font-semibold text-white md:px-6 md:py-3.5 md:text-lg',
+                accentClass,
+              ]}
+            >
+              {item.title}
+            </h3>
+            <ul class="list-disc space-y-1 px-5 py-4 pl-9 text-sm leading-relaxed text-text md:px-6 md:py-5 md:text-base">
+              {item.list.map((entry) => (
+                <li>{entry}</li>
+              ))}
+            </ul>
+          </article>
+        </>
+      ))}
+    </div>
+  ) : (
+    <div
+      class:list={[
+        'mt-7.5 grid w-full items-start gap-4',
+        items.length === 1
+          ? 'max-w-sm grid-cols-1'
+          : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3',
+      ]}
+    >
+      {items.map((item) => (
+        <ServicioCard item={item} bg={bg} />
+      ))}
+    </div>
+  )
+}

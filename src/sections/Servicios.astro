@@ -2,6 +2,7 @@
 import Section from '@/components/Section.astro';
 import Title from '@/components/Title.astro';
 import ServicioCards from '@/components/ServicioCards.astro';
+import ResultMetrics from '@/components/ResultMetrics.astro';
 import { CATEGORIAS_SERVICIOS } from '@/data/servicios';
 ---
 
@@ -13,7 +14,8 @@ import { CATEGORIAS_SERVICIOS } from '@/data/servicios';
         id={categoria.id}
       >
         <Title title={categoria.title} subtitle={categoria.subtitle} img={categoria.img} />
-        <ServicioCards items={categoria.items} bg={categoria.bg} />
+        <ServicioCards items={categoria.items} bg={categoria.bg} expanded={categoria.expanded} />
+        {categoria.resultados && <ResultMetrics resultados={categoria.resultados} />}
       </div>
     ))
   }

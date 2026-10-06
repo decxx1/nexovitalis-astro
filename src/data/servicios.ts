@@ -4,6 +4,18 @@ export interface ServicioItem {
   img: string;
 }
 
+export interface ResultadoItem {
+  icon: string;
+  label: string;
+}
+
+export interface Resultados {
+  title: string;
+  quote: string;
+  columns: 'four' | 'five';
+  items: ResultadoItem[];
+}
+
 export interface ServicioCategoria {
   id: string;
   title: string;
@@ -11,6 +23,9 @@ export interface ServicioCategoria {
   img: string;
   bg: string;
   items: ServicioItem[];
+  /** Lista siempre visible, al lado de la imagen. */
+  expanded?: boolean;
+  resultados?: Resultados;
 }
 
 export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
@@ -52,19 +67,52 @@ export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
         list: ['Control embarazo y niño sano', 'Vacunación', 'Planes nutricionales'],
       },
       {
+        title: 'Medicina paliativa',
+        img: 'medicina-paliativa.webp',
+        list: [
+          'Tratamiento del dolor, patologías crónicas; acompañamiento y asistencia al final de la vida.',
+        ],
+      },
+      {
+        title: 'Diagnóstico por imágenes',
+        img: 'diagnostico-por-imagenes.webp',
+        list: ['Ecografías, radiografía, ECG, laboratorio clínico'],
+      },
+      {
         title: 'Atención integral al adulto mayor',
         img: 'd2.webp',
         list: ['Cuidadoras', 'Actividades lúdicas y acompañamiento'],
       },
       {
-        title: 'Diagnóstico y tratamientos específicos',
-        img: 'd6.webp',
-        list: [
-          'Ecografías, radiografía, ECG, laboratorio clínico',
-          'Escaras, pie diabético, nutrición enteral (adultos y pediátrica)',
-        ],
+        title: 'Tratamientos específicos',
+        img: 'tratamientos-especificos.webp',
+        list: ['Escaras, pie diabético, nutrición enteral (adultos y pediátrica)'],
       },
     ],
+    resultados: {
+      title: 'Resultados concretos de la Internación Domiciliaria',
+      quote:
+        '“Cuando el cuidado se traslada al hogar, se reducen infecciones, se optimizan recursos y se cuida el ambiente.”',
+      columns: 'four',
+      items: [
+        {
+          icon: '/icons/services/chart-red-services.svg',
+          label: 'Menor tasa de infecciones intrahospitalarias',
+        },
+        {
+          icon: '/icons/services/alert-red-services.svg',
+          label: 'Reducción de la huella de carbono',
+        },
+        {
+          icon: '/icons/services/money-red-services.svg',
+          label: 'Ahorro de recursos institucionales',
+        },
+        {
+          icon: '/icons/services/sync-red-services.svg',
+          label: 'Modelos de atención más sustentables',
+        },
+      ],
+    },
   },
   {
     id: 'salud-empresarial',
@@ -127,6 +175,34 @@ export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
         ],
       },
     ],
+    resultados: {
+      title: 'Resultados concretos para su empresa',
+      quote:
+        '“Cuando una empresa cuida estratégicamente a su gente, mejora su rendimiento, reduce costos y fortalece su futuro.”',
+      columns: 'five',
+      items: [
+        {
+          icon: '/icons/company/calendar-red-company.svg',
+          label: 'Reducción del ausentismo evitable',
+        },
+        {
+          icon: '/icons/company/chart-red-company.svg',
+          label: 'Disminución de costos operativos',
+        },
+        {
+          icon: '/icons/company/chart-up-red-company.svg',
+          label: 'Mejora de la productividad',
+        },
+        {
+          icon: '/icons/company/people-red-company.svg',
+          label: 'Mayor compromiso del equipo',
+        },
+        {
+          icon: '/icons/company/happy-red-company.svg',
+          label: 'Clima laboral más saludable',
+        },
+      ],
+    },
   },
   {
     id: 'servicios-para-art',
@@ -134,10 +210,11 @@ export const CATEGORIAS_SERVICIOS: ServicioCategoria[] = [
     subtitle: 'Cuidamos a las personas. Protegemos a las empresas.',
     img: '/services.png',
     bg: 'tertiary',
+    expanded: true,
     items: [
       {
         title: 'Prestaciones domiciliarias para ART',
-        img: 'safety-work.webp',
+        img: 'servicios-art.webp',
         list: [
           'Rehabilitación motora, respiratoria y neurológica',
           'Psicoterapia, evaluación y psicodiagnóstico',
