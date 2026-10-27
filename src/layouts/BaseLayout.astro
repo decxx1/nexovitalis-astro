@@ -3,6 +3,7 @@ import '@/styles/global.css';
 // Supports weights 100-900
 import '@fontsource-variable/inter-tight/wght.css';
 
+import GoogleTagManager from '@/components/GoogleTagManager.astro';
 import Nav from '@/components/Nav.astro';
 import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import type { Preload } from "@/types/Preload";
@@ -54,22 +55,12 @@ const fullImg = urlBase + metaImg;
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:url" content={canonical} />
 		<meta name="twitter:image" content={fullImg} />
-		<!-- Google Tag Manager -->
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-WRJDQHL8');
-		</script>
-		<!-- End Google Tag Manager -->
+		<GoogleTagManager />
   </head>
   <body class="font-sans text-text antialiased">
     <Nav />
     <slot />
     <WhatsAppButton />
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJDQHL8"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
+	<GoogleTagManager noscript />
   </body>
 </html>
