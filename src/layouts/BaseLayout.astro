@@ -55,12 +55,12 @@ const fullImg = urlBase + metaImg;
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:url" content={canonical} />
 		<meta name="twitter:image" content={fullImg} />
-		<GoogleTagManager />
+		<GoogleTagManager  part="head" />
   </head>
   <body class="font-sans text-text antialiased">
     <Nav />
     <slot />
     <WhatsAppButton />
-	<GoogleTagManager noscript />
+	<GoogleTagManager part="body" />
   </body>
 </html>
